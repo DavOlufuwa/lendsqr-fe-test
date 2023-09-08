@@ -3,7 +3,9 @@ import { persist } from "zustand/middleware";
 import { UserData } from "../types/allTypesAndInterfaces";
 
 
-export const useAllUsers = create<{
+
+
+export const useAllUsersStore = create<{
   allUsers: UserData[],
   setAllUsers: (allusers: UserData[]) => void,
   changeUserStatus: (specificUser: UserData, newStatus: string) => void
@@ -31,3 +33,10 @@ export const useAllUsers = create<{
     name: "lendsqrUsers"
   }
 ))
+
+// Fetching the Mock User Data from the API
+fetch("https://run.mocky.io/v3/1c59efc1-78c7-4b15-b1b0-8ec11a454d07")
+.then(res => res.json())
+.then(data => {
+  useAllUsersStore.getState().setAllUsers(data)
+})
