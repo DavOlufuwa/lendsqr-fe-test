@@ -1,0 +1,51 @@
+$text-color: #545F7D;
+$border-color: #213F7D;
+
+@mixin form-control{
+  display: flex;
+  flex-direction: column;  
+}
+
+@mixin form-input{
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  opacity: 0.2;
+  background: #FFF;
+  color: $text-color;
+}
+
+.form-container{
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .form-control-group{
+      @include form-control;
+  
+      .label{
+        color: $text-color;
+        font-weight: 500;
+        font-size: 0.875rem;
+      }
+  
+      .form-input{
+        @include form-input;
+        // padding: $red;
+  
+        &::placeholder{
+          color: $text-color;
+          opacity: 0.7;
+        }
+      }
+  
+      .form-select{
+        @include form-input;
+      }
+    }
+    
+  }
+
+}
+

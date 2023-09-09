@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { UserData } from "../types/allTypesAndInterfaces";
+import { UserData } from "../types/typesAndInterfaces";
 
 
 
