@@ -1,8 +1,10 @@
-import React from 'react'
+import Navigation from '../Navigation/Navigation'
 
 const Layout = () => {
   return (
-    <div>Layout</div>
+    <div>
+      <Navigation />
+    </div>
   )
 }
 
