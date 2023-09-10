@@ -1,8 +1,9 @@
 import Navigation from '../Navigation/Navigation'
+import './layout.styles.scss'
 
 const Layout = () => {
   return (
-    <div>
+    <div className='layout'>
       <Navigation />
     </div>
   )
