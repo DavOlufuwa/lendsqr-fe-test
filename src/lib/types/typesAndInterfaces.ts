@@ -3,13 +3,18 @@ export interface UserData {
   dateJoined: string;
   status: string;
   organizationName: string;
-  companyEmail: string;
   personalInfo: {
     avatar: string;
     fullName: string;
+    userName:string;
     phoneNumber: string;
     emailAddress: string;
+    bank: string;
     bvn: string;
+    accountNumber: string;
+    savings: number;
+    tier: number;
+    specialCode: string;
     gender: string;
     maritalStatus: string;
     children: number;

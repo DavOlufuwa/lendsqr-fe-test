@@ -4,7 +4,7 @@ import Logo from '/assets/logo/lendsqr-icon.svg';
 import SearchIcon from '/assets/icons/search-icon.svg';
 import Bell from '/assets/icons/bell.png';
 import DropDown from '/assets/icons/caret-down.svg';
-import Sidebar from './Sidebar';
+
 
 interface TopbarProps {
   topbarProps: {

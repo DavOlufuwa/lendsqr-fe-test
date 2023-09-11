@@ -6,9 +6,19 @@
   main{
     position: absolute;
     display: flex;
-    background-color: aquamarine;
     top: 6.45rem;
-    left: 17.75rem;
-    width: calc(100vw - 19rem);
+    left: 0;
+    width: 100%;
+    
+    &.overflow-hidden{
+      top: 0px;
+      height: 100vh;
+    }
+    
+    @media screen and (min-width: 900px){
+      left: 17.75rem;
+      width: calc(100vw - 19rem);
+    }
+
   } 
 }

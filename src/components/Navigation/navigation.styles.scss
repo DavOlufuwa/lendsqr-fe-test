@@ -176,7 +176,7 @@ $green: #39CDCC;
     @media (hover: none){
       padding-right: 1.875rem;
     }
-
+    
     .top-options{
       display: none;
     }
@@ -186,7 +186,10 @@ $green: #39CDCC;
   }
 
   .side-navbar{
-    width:unset;
+    width:100%;
+    position: absolute;
+    top: 6.25rem;
+    z-index: 20;
     height: max-content;
     transition: 0.2s;
     transform: translateX(-100%);
@@ -197,7 +200,6 @@ $green: #39CDCC;
         display: flex;
       }
     }
-
     &.open{
       transform: translateX(0);
     }

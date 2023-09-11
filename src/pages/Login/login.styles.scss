@@ -19,11 +19,12 @@ $text-green: #39CDCC;
 @mixin input-field-style {
   font-family: 'Avenir Next Regular', sans-serif;
   border-radius: 5px;
-  border: 2px solid #545f7d26;
+  border: 1px solid #545f7d26;
   background: #FFF;
   color: $text;
   height: 3.125rem;
   font-size: .875rem;
+  transition: 0.2s;
 
   &::placeholder {
     font-size: 14px;
@@ -38,6 +39,10 @@ $text-green: #39CDCC;
     color: $text-two;
     opacity: 0.6;
   }
+  &:focus, &:active{
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(57, 205, 204, 0.25);
+  }
 };
 
 .header-section{
@@ -50,18 +55,20 @@ $text-green: #39CDCC;
 
 .login-container{
   font-family: 'Avenir Next regular', sans-serif;
-  padding: 1rem 1.25rem;
+  padding: 1rem 2rem;
+  margin-top: 6rem;
     
 
   .img-section{
     margin: 0 0 1.5rem 0;
+    display: none;
     img{
-      display: block;
       height: 100%;
       width: 100%;
     }
   }
   .form-section{
+   
     .header{
       div{
         margin: 1rem 0 2.5rem;
@@ -119,12 +126,13 @@ $text-green: #39CDCC;
           text-transform: uppercase;
           letter-spacing: 1.2px;
           font-family: "Avenir Next Bold", sans-serif;
-          
-          
-          
           margin: 1.25rem 0;
           letter-spacing: 0.1em;
           cursor: pointer;
+
+          &:hover{
+            text-decoration: underline;
+          }
         }
         .login-btn{
           button{
@@ -157,6 +165,7 @@ $text-green: #39CDCC;
     justify-content: space-evenly;
 
     .image-section{
+      display: block;
       img{
         max-width: 900px;
         width: 40%;
@@ -179,6 +188,7 @@ $text-green: #39CDCC;
     align-items: start;
 
     .img-section{
+      display: block;
       align-self: flex-end;
       width: 50%;
       img{

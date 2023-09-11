@@ -35,7 +35,7 @@ export const useAllUsersStore = create<{
 ))
 
 // Fetching the Mock User Data from the API
-fetch("https://run.mocky.io/v3/1c59efc1-78c7-4b15-b1b0-8ec11a454d07")
+fetch("https://run.mocky.io/v3/20f06af9-44ad-488f-bbd7-112079aa2c81")
 .then(res => res.json())
 .then(data => {
   useAllUsersStore.getState().setAllUsers(data)

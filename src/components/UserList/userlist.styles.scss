@@ -1,0 +1,216 @@
+$dim : #545F7D;
+$blue: #213F7D;
+$active-green: #39CD62;
+$pending-yellow: #E9B200;
+$blacklist-red: #E4033B;
+
+
+.user-list{
+  position: relative;
+  width: 100%;
+
+  .swipe-help{
+    font-size: 0.75rem;
+    text-align: center;
+    margin: 1.25rem 0;
+    color: $dim;
+    display: none;
+
+    @media screen and (max-width: 1300px) and (hover:none){
+      display: block;
+    }
+  }
+  .content{    
+    border-radius: 4px;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    background: #FFF;
+    box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+    padding: 1.875rem;
+    position: relative;
+    overflow-y: auto;
+
+    .table{
+      
+      transition: transform 5s ease-in-out;
+
+      @media screen and (max-width: 1500px){
+        min-width: 1100px;
+      }
+      .headers{
+        display: flex;
+        color: $dim;
+        margin-bottom: 0.5rem;
+        div{
+          display: flex;
+          align-items:start;
+          text-transform: uppercase;
+          gap: 10px;
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+    
+        .organization{
+          display: flex;
+         
+          width:18%;
+        }
+        .username{   
+          width: 15%;
+          margin-right: 3px;
+        }
+        .email{
+          width: 22%;
+        }
+        .phone-num{
+          width: 14%;
+        }
+        .date-joined{
+          width: 17%;
+        }
+        .status{
+          width: 10%;
+        }
+      }
+    }
+  }
+
+  .pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.25rem 0;
+
+    @media screen and (max-width: 900px){
+      flex-direction: column-reverse;
+      gap: 2rem;
+      margin: 2rem 0;
+      
+    }
+
+    .page-guide{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: $dim;
+      
+      select{
+        border: none;
+        border-radius: 4px;
+        background-color:rgba(33, 63, 125, 0.10);
+        height: 1.875rem;
+        
+        padding: 0 0.25rem;
+        display: flex;
+        color: $blue;
+        font-weight: 500;
+      }
+    }
+    
+    .pagination-container{
+      gap: 1.25rem;
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+
+      li{
+        &:not(.active-page):not(.disabled):not(.break):not(.next):not(.prev){
+          opacity: 0.6;
+          cursor: pointer;
+        }
+      }
+      .active-page{
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .prevBtn, .nextBtn{
+        cursor: pointer;
+        background-color: rgba(33, 63, 125, 0.10);;
+        height: 14px;
+        width: 14px;
+        padding: 0.125rem 0.25rem;
+        border-radius: 4px;
+      }
+      .disabled{
+        // cursor: not-allowed;
+        opacity: 0.4;
+      }
+      .break{
+        color: $dim;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+// USER ROW STYLES
+.user-row{
+  display: flex;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(33, 63, 125, 0.10);
+  // gap: 1rem;
+  div{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $dim;
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  .org{
+    width: 17%;
+    margin-right: 0.65rem;
+  }
+  .username{
+    width: 15%;
+
+    margin-right: 4px;
+  }
+  .email{
+    width: 19%;
+    margin-right: 2rem;
+  }
+  .phone-number{
+    width: 14%;
+
+    // margin-right: 3.5rem;
+  }
+  .date{
+    width: 17%;  
+  }
+  .status{
+    span{
+      align-self: flex-start;
+      border-radius: 100px;
+      padding: .5rem 1rem;
+      font-size: 0.875rem;
+      &.active{
+        background-color: #F3FCF6;
+        color: $active-green;
+      }
+      &.inactive{
+        background-color: #F5F5F7;
+        color: $dim;
+      }
+      &.pending{
+        background-color: #FDF7E5;
+        color: $pending-yellow;
+      }
+      &.blacklisted{
+        background-color: #FCE6EB;
+        color: $blacklist-red;
+      }
+    }
+  }
+
+
+}
+
+// filter component
+.filter{
+  img{
+    height: 1rem;
+    width: 1rem;
+  }
+}
