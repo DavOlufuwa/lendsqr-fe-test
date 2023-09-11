@@ -3,13 +3,15 @@ import { Route, createRoutesFromElements, createBrowserRouter, RouterProvider } 
 import Login from "./pages/Login/Login"
 import './styles/pages.scss'
 import Layout from "./components/Layout/Layout"
+import Dashboard from "./pages/Dashboard/Dashboard"
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path='/' element={<Login />} />
-      <Route path="/home" element={<Layout/>}>
+      <Route path="/dashboard" element={<Layout/>}>
+        <Route index element={<Dashboard />} />
 
       </Route>
     </>

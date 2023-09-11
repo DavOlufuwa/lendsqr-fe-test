@@ -3,5 +3,12 @@
   font-family: 'Work Sans', sans-serif;
   margin: 0;
   background: #FBFBFB;
-  
+  main{
+    position: absolute;
+    display: flex;
+    background-color: aquamarine;
+    top: 6.45rem;
+    left: 17.75rem;
+    width: calc(100vw - 19rem);
+  } 
 }
