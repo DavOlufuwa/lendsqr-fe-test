@@ -4,6 +4,8 @@ import MoreOptions from '/assets/icons/more.svg'
 import Eye from '/assets/icons/eye.svg'
 import Activate from '/assets/icons/activate-user.png'
 import Blacklist from '/assets/icons/blacklist-user.png'
+import { Link } from "react-router-dom"
+import { useAllUsersStore } from "../../lib/store/useAllUsers"
 
 
 interface UserRowProps {
@@ -22,6 +24,18 @@ const UserRow = ({userData}: UserRowProps) => {
   } = userData
 
   const [showMore, setShowMore] = useState<boolean>(false)
+
+  const changeUserStatus = useAllUsersStore((state) => state.changeUserStatus)
+
+  const activateUser = () => {
+    changeUserStatus(id, "active")
+    setShowMore(false)
+  }
+
+  const blacklistUser = () => {
+    changeUserStatus(id, "blacklisted")
+    setShowMore(false)
+  }
 
   return (
     <div className="user-row">
@@ -48,9 +62,20 @@ const UserRow = ({userData}: UserRowProps) => {
       <div className="options">
         <img src={MoreOptions} alt="more options" onClick={() => setShowMore(!showMore)}/>
         <section className={`options-menu ${showMore ? 'open' : ''}`}>
-          <div><img src={Eye} alt="view details"/> <span>View Details</span></div>
-          <div><img src={Blacklist} alt="blacklist user"/> <span>Blacklist User</span></div>
-          <div><img src={Activate} alt="activate user"/> <span>Activate User</span></div>
+          <div>
+            <Link to={`/userdetails/${id}`}>
+              <img src={Eye} alt="view details"/> 
+              <span>View Details</span>
+            </Link>
+          </div>
+          <div onClick={blacklistUser}>
+            <img src={Blacklist} alt="blacklist user"/> 
+            <span>Blacklist User</span>
+          </div>
+          <div onClick={activateUser}>
+            <img src={Activate} alt="activate user"/> 
+            <span>Activate User</span>
+          </div>
         </section>
       </div>
     </div>

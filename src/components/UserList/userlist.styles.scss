@@ -50,6 +50,11 @@ $blacklist-red: #E4033B;
           position: absolute;
           top: 20px;
           left: -20px;
+          display: none;
+
+          &.active{
+            display: block;
+          }
         }
         div{
           display: flex;
@@ -232,6 +237,7 @@ $blacklist-red: #E4033B;
         display: flex;
         padding: 1.25rem;
         gap: 0.5rem;
+        
         div{
           display: flex;
           align-items: center;
@@ -243,6 +249,14 @@ $blacklist-red: #E4033B;
           padding: 0.25rem 0;
           &:hover{
             background-color: rgba(33, 63, 125, 0.10);
+          }
+
+          a{
+            text-decoration: none;
+            color: $dim;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
           }
           img{
             height: 0.875rem;

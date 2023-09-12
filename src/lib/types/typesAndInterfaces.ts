@@ -42,3 +42,11 @@ export interface UserData {
   }[];
 }
 
+export interface FilterInterface {
+  organization: string;
+  username: string;
+  email: string;
+  date: string; 
+  phoneNumber: string;
+  status: string;
+}
