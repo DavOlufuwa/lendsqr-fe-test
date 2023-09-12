@@ -1,11 +1,44 @@
+import { useAllUsersStore } from '../../lib/store/useAllUsers'
 import Button from '../Button/Button'
 import './filterform.styles.scss'
 import SelectArrow from '/assets/icons/select-down.svg'
+import { useEffect, useState } from 'react'
 
 
 
 
 const FilterForm = () => {
+
+  const allUsers  = useAllUsersStore((state) => state.allUsers)
+  const [allOrganizations, setAllOrganizations] = useState<string[]>([])
+  
+  
+  useEffect(() => {
+
+    const sortOrganizations = () => {      
+      
+      let sortedOrgsArray: string[]
+      
+      const allOrganizations: string[] = allUsers.map((user) => user.organizationName)
+      const sortedOrgs = new Set<string>()
+    
+      for (const str of allOrganizations) {
+        sortedOrgs.add(str);
+      }
+  
+      sortedOrgsArray = Array.from(sortedOrgs)
+  
+      setAllOrganizations(sortedOrgsArray)
+    }
+
+    sortOrganizations()
+  }, [])
+
+  
+  // Convert the Set to an array to display the unique strings
+  
+
+  
   return (
     <div className='form-container'>
       <form>
@@ -14,7 +47,11 @@ const FilterForm = () => {
             <div className='select-container'>
               <img src={SelectArrow} alt='select'/>
               <select className='form-select' id='organization'>
-                <option value=''>Select</option>
+                {
+                  allOrganizations.map((organization, index) => (
+                    <option value={organization} key={index}>{organization}</option>
+                  ))
+                }
               </select>
             </div>
         </div>
