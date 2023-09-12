@@ -4,9 +4,16 @@ $active-green: #39CD62;
 $pending-yellow: #E9B200;
 $blacklist-red: #E4033B;
 
+@mixin shadow {
+  border-radius: 4px;
+  border: 1px solid rgba(33, 63, 125, 0.04);
+  background: #FFF;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+}
+
 
 .user-list{
-  position: relative;
+  
   width: 100%;
 
   .swipe-help{
@@ -21,13 +28,10 @@ $blacklist-red: #E4033B;
     }
   }
   .content{    
-    border-radius: 4px;
-    border: 1px solid rgba(33, 63, 125, 0.06);
-    background: #FFF;
-    box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+    @include shadow;
     padding: 1.875rem;
     position: relative;
-    overflow-y: auto;
+    // overflow-y: auto;
 
     .table{
       
@@ -40,6 +44,13 @@ $blacklist-red: #E4033B;
         display: flex;
         color: $dim;
         margin-bottom: 0.5rem;
+        position: relative;
+
+        .filter-form-container{
+          position: absolute;
+          top: 20px;
+          left: -20px;
+        }
         div{
           display: flex;
           align-items:start;
@@ -133,7 +144,7 @@ $blacklist-red: #E4033B;
         border-radius: 4px;
       }
       .disabled{
-        // cursor: not-allowed;
+        cursor: not-allowed;
         opacity: 0.4;
       }
       .break{
@@ -174,12 +185,13 @@ $blacklist-red: #E4033B;
   .phone-number{
     width: 14%;
 
-    // margin-right: 3.5rem;
   }
   .date{
     width: 17%;  
   }
   .status{
+
+    width: 12%;
     span{
       align-self: flex-start;
       border-radius: 100px;
@@ -203,7 +215,44 @@ $blacklist-red: #E4033B;
       }
     }
   }
+  
+  .options{
+    position: relative;
+    cursor: pointer;
+    .options-menu{
+      @include shadow;
+      position: absolute;
+      left: -120px;
+      flex-direction: column;
+      display: none;
+      background-color: #FFF;
+      width: 11.25rem;
+      z-index: 20;
+      &.open{
+        display: flex;
+        padding: 1.25rem;
+        gap: 0.5rem;
+        div{
+          display: flex;
+          align-items: center;
+          gap:0.5rem;
+          color: $dim;
+          font-size: 0.875rem;
+          cursor: pointer;
+          transition: 0.2s ease;
+          padding: 0.25rem 0;
+          &:hover{
+            background-color: rgba(33, 63, 125, 0.10);
+          }
+          img{
+            height: 0.875rem;
+            width: 0.875rem;
+          }
+        }
+      }
 
+    }
+  }
 
 }
 

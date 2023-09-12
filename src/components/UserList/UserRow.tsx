@@ -1,4 +1,9 @@
 import { UserData } from "../../lib/types/typesAndInterfaces"
+import { useState } from "react"
+import MoreOptions from '/assets/icons/more.svg'
+import Eye from '/assets/icons/eye.svg'
+import Activate from '/assets/icons/activate-user.png'
+import Blacklist from '/assets/icons/blacklist-user.png'
 
 
 interface UserRowProps {
@@ -16,6 +21,7 @@ const UserRow = ({userData}: UserRowProps) => {
     personalInfo,
   } = userData
 
+  const [showMore, setShowMore] = useState<boolean>(false)
 
   return (
     <div className="user-row">
@@ -36,13 +42,16 @@ const UserRow = ({userData}: UserRowProps) => {
       </div>
       <div className="status">
         <span className={`${status}`}>
-          {status}
+          {status} 
         </span>
       </div>
       <div className="options">
-        <span></span>
-        <span></span>
-        <span></span>
+        <img src={MoreOptions} alt="more options" onClick={() => setShowMore(!showMore)}/>
+        <section className={`options-menu ${showMore ? 'open' : ''}`}>
+          <div><img src={Eye} alt="view details"/> <span>View Details</span></div>
+          <div><img src={Blacklist} alt="blacklist user"/> <span>Blacklist User</span></div>
+          <div><img src={Activate} alt="activate user"/> <span>Activate User</span></div>
+        </section>
       </div>
     </div>
   )

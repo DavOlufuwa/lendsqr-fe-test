@@ -1,11 +1,12 @@
 import ReactPaginate from "react-paginate"
 import { useState, useMemo, ChangeEvent } from "react"
 import { useAllUsersStore } from "../../lib/store/useAllUsers"
-import FilterComponent from "./FilterComponent"
+import Filter from '/assets/icons/filter.svg'
 import UserRow from "./UserRow"
 import './userlist.styles.scss'
 import RightArrow from '/assets/icons/arrow-right.svg'
 import LeftArrow from '/assets/icons/arrow-left.svg'
+import FilterForm from "../FilterForm/FilterForm"
 
 
 
@@ -21,7 +22,7 @@ const UserList = () => {
   const handlePageChange = (selectedPage: { selected: number }) => {
     setCurrentPage(selectedPage.selected)
   }
-
+  // handling users per page change
   const handleUsersPerPageChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newValue = Number(e.target.value)
     setUsersPerPage(newValue)
@@ -47,40 +48,43 @@ const UserList = () => {
         <section className="content">
           <section className="table">
             <div className='headers'>
+              <div className="filter-form-container">
+                <FilterForm />
+              </div>
               <div className='organization'>
                 <p>Organization</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
               <div className='username'>
                 <p>Username</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
               <div className='email'>
                 <p>Email</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
               <div className='phone-num'>
                 <p>Phone Number</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
               <div className='date-joined'>
                 <p>Date Joined</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
               <div className='status'>
                 <p>Status</p>
                 <div className='filter'>
-                  <FilterComponent />
+                  <img src={Filter} alt='filter button'/>
                 </div>
               </div>
             </div>
