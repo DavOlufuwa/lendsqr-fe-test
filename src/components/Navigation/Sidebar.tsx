@@ -118,49 +118,49 @@ const Sidebar = ({sidebarProps}: sidebarProps) => {
       </div>
       <ul>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users">
             <img src={Users} alt='users icon'/>
             <p>Users</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/guarantors">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/guarantors">
             <img src={Guarantors} alt='guarantors icon'/>
             <p>Guarantors</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/loans">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/loans">
             <img src={Loans} alt='loans icon'/>
             <p>Loans</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/decision-models">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/decision-models">
             <img src={DecisionModels} alt='decision models icon'/>
             <p>Decision Models</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/savings">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/savings">
             <img src={Savings} alt='savings icon'/>
             <p>Savings</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/loan-requests">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/loan-requests">
             <img src={LoanRequests} alt='loan requests icon'/>
             <p>Loan Requests</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/white-list">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/white-list">
             <img src={WhiteList} alt='whitelist icon'/>
             <p>Whitelist</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/karma">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/karma">
             <img src={Karma} alt='karma icon'/>
             <p>Karma</p>
           </NavLink>
@@ -171,55 +171,55 @@ const Sidebar = ({sidebarProps}: sidebarProps) => {
       </div>
       <ul>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/organization">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/organization">
             <img src={Briefcase} alt='organization icon'/>
             <p>Organization</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/loans">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/loans">
             <img src={LoanRequests} alt='loan products icon'/>
             <p>Loan Products</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/savings">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/savings">
             <img src={SavingsProducts} alt='savings products icon'/>
             <p>Savings Products</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/fees-and-charges">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/fees-and-charges">
             <img src={FeesAndCharges} alt='fees and charges icon'/>
             <p>Fees and Charges</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/transactions">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/transactions">
             <img src={Transactions} alt='transactions icon'/>
             <p>Transactions</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/services">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/services">
             <img src={Services} alt='services icon'/>
             <p>Services</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/service-account">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/service-account">
             <img src={ServiceAccount} alt='service account icon'/>
             <p>Service Account</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/settlements">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/settlements">
             <img src={Settlements} alt='settlements icon'/>
             <p>Settlements</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/reports">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/reports">
             <img src={Reports} alt='reports icon'/>
             <p>Reports</p>
           </NavLink>
@@ -230,25 +230,25 @@ const Sidebar = ({sidebarProps}: sidebarProps) => {
       </div>
       <ul>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/preferences">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/preferences">
             <img src={Preferences} alt='preferences icon'/>
             <p>Preferences</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/fees-and-pricing">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/fees-and-pricing">
             <img src={FeesAndPricing} alt='fees and pricing icon'/>
             <p>Fees and Pricing</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/audit-logs">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/audit-logs">
             <img src={AuditLogs} alt='audit logs icon'/>
             <p>Audit Logs</p>
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={closeMenu} className={navClassToggler} to="/dashboard/systems-messages">
+          <NavLink onClick={closeMenu} className={navClassToggler} to="/users/systems-messages">
             <img src={SystemsMessages} alt='systems messages icon'/>
             <p>Systems Messages</p>
           </NavLink>

@@ -25,7 +25,7 @@ export interface UserData {
     employmentStatus: string;
     sectorOfEmployment: string;
     durationOfEmployment: string;
-    officeEmail: string;
+    companyEmail: string;
     monthlyIncome: number[];
     loanRepayment: number;
   };

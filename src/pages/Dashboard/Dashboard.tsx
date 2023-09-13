@@ -11,9 +11,8 @@ import { useAllUsersStore } from '../../lib/store/useAllUsers'
 const Dashboard = () => {
 
   const numberofUsers = useAllUsersStore((state) => state.allUsers.length)
-  const filteredUsers = useAllUsersStore((state) => state.filteredUsers)
-  
-  const activeUsers = useMemo(() => filteredUsers.filter((user) => user.status === 'active').length, [filteredUsers])
+  const allUsers = useAllUsersStore((state) => state.allUsers)
+  const activeUsers = useMemo(() => allUsers.filter((user) => user.status === 'active').length, [allUsers])
 
 
   return (

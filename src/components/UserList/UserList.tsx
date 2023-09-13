@@ -1,11 +1,12 @@
 import ReactPaginate from "react-paginate"
-import { useState, useMemo, ChangeEvent } from "react"
+import { useState, useMemo, ChangeEvent} from "react"
 import { useAllUsersStore } from "../../lib/store/useAllUsers"
 import Filter from '/assets/icons/filter.svg'
 import UserRow from "./UserRow"
 import './userlist.styles.scss'
 import RightArrow from '/assets/icons/arrow-right.svg'
 import LeftArrow from '/assets/icons/arrow-left.svg'
+import DownArrow from '/assets/icons/select-down.svg'
 import FilterForm from "../FilterForm/FilterForm"
 
 
@@ -14,7 +15,6 @@ const UserList = () => {
 
   const userList = useAllUsersStore((state) => state.filteredUsers)
 
-  
   // creating pagination
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [usersPerPage, setUsersPerPage] = useState<number>(10)
@@ -110,20 +110,20 @@ const UserList = () => {
       <section className="pagination">      
         <div className="page-guide">
           <span>Showing</span> 
-          <select  
-            value = {usersPerPage}
-            onChange={handleUsersPerPageChange}
-          >
-            {
-              userList.length <= 10 ? <option>{userList.length}</option> :
-
-              pageViewNumbers.map((num) => (
-                <option key={num} value={num}>{num}</option>
-              ))
-            
-            }
-            
-          </select>
+          <div className="select-container">   
+            <select  
+              value = {usersPerPage}
+              onChange={handleUsersPerPageChange}
+            >
+              {
+                userList.length <= 10 ? <option>{userList.length}</option> :
+                pageViewNumbers.map((num) => (
+                  <option key={num} value={num}>{num}</option>
+                ))
+              }
+            </select>
+            <img src={DownArrow} alt='select'/>
+          </div>
           out of {userList.length}
         </div>
         <div>

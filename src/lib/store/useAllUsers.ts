@@ -21,8 +21,12 @@ export const useAllUsersStore = create<UserStore>()(persist(
       setAllUsers: (users: UserData[]) => set(() => ({ allUsers: users })),
       // changing the user status
       changeUserStatus: (id, newStatus) => set((state) => (
+        
         {
           filteredUsers: state.filteredUsers.map((user) => (
+            user.id === id ? {...user, status: newStatus} : user
+          )),
+          allUsers:state.filteredUsers.map((user) => (
             user.id === id ? {...user, status: newStatus} : user
           ))
         } 
@@ -31,7 +35,6 @@ export const useAllUsersStore = create<UserStore>()(persist(
       filteredUsers: [],
       setFilteredUsers: (filterData) => set({filteredUsers: filterData}),
       resetUsers: () => set((state)=> ({filteredUsers: state.allUsers}))
-        
     }),
 
   // Creating the name of the data that will be stored in the local storage
@@ -41,8 +44,10 @@ export const useAllUsersStore = create<UserStore>()(persist(
 ))
 
 // Fetching the Mock User Data from the API
-fetch("https://run.mocky.io/v3/f7a41ca7-df9f-4769-a28c-7b81886456f1")
+fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg")
 .then(res => res.json())
 .then(data => {
-  useAllUsersStore.getState().setAllUsers(data.reverse())
-})
+    useAllUsersStore.getState().setAllUsers(data)
+    useAllUsersStore.setState({filteredUsers: data.reverse()})
+  })
+

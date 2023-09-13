@@ -65,13 +65,14 @@ const FilterForm = ({formProps}: FormProps) => {
     e.preventDefault()
 
     
-    const filteredData = allUsers.filter((user) => {
+      const filteredData = allUsers.filter((user) => {
       // converting the date 
       const userDateJoined = new Date(user.dateJoined);
       const convertedDate = userDateJoined.toISOString().split('T')[0];
       
+
       return(      
-        // Checking if all fields are filled before filtering
+        // Checking for fields containing values before filtering
         (!organization || user.organizationName.includes(organization)) &&
         (!username || user.personalInfo.userName.includes(username)) &&
         (!email || user.personalInfo.emailAddress.includes(email)) &&

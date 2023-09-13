@@ -31,7 +31,7 @@ $blacklist-red: #E4033B;
     @include shadow;
     padding: 1.875rem;
     position: relative;
-    // overflow-y: auto;
+    overflow-y: auto;
 
     .table{
       
@@ -51,6 +51,7 @@ $blacklist-red: #E4033B;
           top: 20px;
           left: -20px;
           display: none;
+          z-index: 5;
 
           &.active{
             display: block;
@@ -63,6 +64,10 @@ $blacklist-red: #E4033B;
           gap: 10px;
           font-size: 0.75rem;
           font-weight: 600;
+
+          img{
+            cursor: pointer;
+          }
         }
     
         .organization{
@@ -109,17 +114,36 @@ $blacklist-red: #E4033B;
       gap: 10px;
       font-size: 0.875rem;
       color: $dim;
-      
-      select{
-        border: none;
-        border-radius: 4px;
-        background-color:rgba(33, 63, 125, 0.10);
-        height: 1.875rem;
+      .select-container{
+        position: relative;
         
-        padding: 0 0.25rem;
-        display: flex;
-        color: $blue;
-        font-weight: 500;
+        select{
+          border: none;
+          font-family: inherit;
+          border-radius: 4px;
+          background-color:rgba(33, 63, 125, 0.10);
+          height: 1.875rem;
+          padding: 0 2rem 0 0.75rem;
+          display: flex;
+          color: $blue;
+          font-weight: 500;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          appearance: none;
+  
+          &:focus{
+            border: none;
+          }
+        }
+        img{
+          position: absolute;
+          z-index: -1;
+          height: 14px;
+          width: 14px;
+          bottom: 7px;
+          right: 8px;
+          opacity: 0.6;
+        }
       }
     }
     
@@ -163,7 +187,9 @@ $blacklist-red: #E4033B;
 // USER ROW STYLES
 .user-row{
   display: flex;
-  padding: 1.4rem 0;
+  // padding: 1.4rem 0;
+  align-items: center;
+  height: 3.75rem;
   border-bottom: 1px solid rgba(33, 63, 125, 0.10);
   // gap: 1rem;
   div{
@@ -195,7 +221,6 @@ $blacklist-red: #E4033B;
     width: 17%;  
   }
   .status{
-
     width: 12%;
     span{
       align-self: flex-start;
@@ -233,6 +258,12 @@ $blacklist-red: #E4033B;
       background-color: #FFF;
       width: 11.25rem;
       z-index: 20;
+
+      @media screen and (max-width:1500px){
+        left: -180px;
+        top: -60px;
+      }
+
       &.open{
         display: flex;
         padding: 1.25rem;
@@ -264,10 +295,10 @@ $blacklist-red: #E4033B;
           }
         }
       }
-
     }
-  }
 
+
+  }
 }
 
 // filter component
@@ -277,3 +308,5 @@ $blacklist-red: #E4033B;
     width: 1rem;
   }
 }
+
+
