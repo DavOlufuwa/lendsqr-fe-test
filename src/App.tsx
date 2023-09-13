@@ -13,14 +13,11 @@ const router = createBrowserRouter(
       <Route path='/' element={<Login />} />
       <Route path="/users" element={<Layout/>}>
         <Route index element={<Dashboard />} />
-        <Route path="users/:id" element={<UserDetails />}/>
+        <Route path=":id" element={<UserDetails />}/>
       </Route>
     </>
-    
   )
-  
 )
-
 
 function App() {
   return (

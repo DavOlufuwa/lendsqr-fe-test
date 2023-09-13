@@ -40,7 +40,7 @@ const UserList = () => {
   const endIndex  = startIndex + usersPerPage;
 
   // Tracking users based on the filtered data
-  const displayedUsers = useMemo(() => userList.reverse().slice(startIndex, endIndex), [startIndex, endIndex, userList])
+  const displayedUsers = useMemo(() => userList.slice(startIndex, endIndex), [startIndex, endIndex, userList])
 
 
   const customNextLabel = (
@@ -49,20 +49,18 @@ const UserList = () => {
   const customPrevLabel = (
     <img src={LeftArrow} alt="previous button"/>
   )
-
   const pageViewNumbers = [10, 20, 50, 70, 100]
-
 
   return (
     
       <div className="user-list">
+        <div className={`filter-form-container ${showForm && 'active'}`} >
+          <FilterForm formProps={{toggleForm}}/>
+        </div>
         <div className="swipe-help">swipe horizontally to view more details</div>
         <section className="content">
           <section className="table">
             <div className='headers'>
-              <div className={`filter-form-container ${showForm && 'active'}`} >
-                <FilterForm formProps={{toggleForm}}/>
-              </div>
               <div className='organization'>
                 <p>Organization</p>
                 <div className='filter' onClick={toggleForm}>
@@ -100,11 +98,19 @@ const UserList = () => {
                 </div>
               </div>
             </div>
-            {
-              displayedUsers.map((user) => 
-                <UserRow key={user.id} userData={user}/>
-              )
-            }
+            <div className="results">
+              {
+                displayedUsers.length === 0 ? (
+                  <p className="error">No users with such records found</p>
+                ): (
+                  displayedUsers.map((user) => 
+                    <UserRow key={user.id} userData={user}/>
+                  )
+                )
+
+              }
+            </div>
+
           </section>
         </section>
       <section className="pagination">      

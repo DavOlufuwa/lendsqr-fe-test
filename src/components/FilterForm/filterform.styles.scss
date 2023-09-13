@@ -4,7 +4,7 @@ $border-color: #213F7D;
 @mixin form-control{
   display: flex;
   flex-direction: column;  
-  
+  gap: 6px;
 }
 
 @mixin form-input{
@@ -94,10 +94,10 @@ $border-color: #213F7D;
       display: flex;
       justify-content: start;
       margin-top: 1rem;
-      gap: 5rem;
+      gap: 2rem;
       button{
         font-family: inherit;
-        width: 45%;
+        width: 50%;
       }
     }
   }

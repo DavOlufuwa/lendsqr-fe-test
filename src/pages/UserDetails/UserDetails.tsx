@@ -10,9 +10,10 @@ const UserDetails = () => {
   const { id } = useParams()
 
   const filteredUsers = useAllUsersStore((state) => state.filteredUsers)
+  const changeUserStatus = useAllUsersStore((state) => state.changeUserStatus)
 
   const user = filteredUsers.find((user) => user.id === id)!
-
+  
   return (
     <div className='details-container'>
       <section>
@@ -24,8 +25,8 @@ const UserDetails = () => {
       <section>
         <h1>User Details</h1>
         <div>
-          <Button buttonType='blacklist'>BlackList user</Button>
-          <Button buttonType='activate'>Activate user</Button>
+          <Button buttonType='blacklist' onClick={() => changeUserStatus(user.id, 'blacklisted')}>BlackList user</Button>
+          <Button buttonType='activate' onClick={() => changeUserStatus(user.id, 'active')}>Activate user</Button>
         </div>
       </section>
       <section>

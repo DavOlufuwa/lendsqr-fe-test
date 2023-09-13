@@ -63,7 +63,7 @@ const UserRow = ({userData}: UserRowProps) => {
         <img src={MoreOptions} alt="more options" onClick={() => setShowMore(!showMore)}/>
         <section className={`options-menu ${showMore ? 'open' : ''}`}>
           <div>
-            <Link to={`users/${id}`}>
+            <Link to={`${id}`}>
               <img src={Eye} alt="view details"/> 
               <span>View Details</span>
             </Link>

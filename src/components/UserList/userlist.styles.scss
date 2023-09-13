@@ -15,6 +15,24 @@ $blacklist-red: #E4033B;
 .user-list{
   
   width: 100%;
+  position: relative;
+
+  .filter-form-container{
+    position: absolute;
+    top: 55px;
+    left: 16px;
+    display: none;
+    z-index: 5;
+
+    &.active{
+      display: block;
+    }
+
+    @media(hover:none){
+      top: 90px;
+    }
+  }
+
 
   .swipe-help{
     font-size: 0.75rem;
@@ -31,10 +49,12 @@ $blacklist-red: #E4033B;
     @include shadow;
     padding: 1.875rem;
     position: relative;
-    overflow-y: auto;
+    
+    @media screen and (max-width: 1500px){
+      overflow-y: auto;
+    }
 
     .table{
-      
       transition: transform 5s ease-in-out;
 
       @media screen and (max-width: 1500px){
@@ -46,17 +66,7 @@ $blacklist-red: #E4033B;
         margin-bottom: 0.5rem;
         position: relative;
 
-        .filter-form-container{
-          position: absolute;
-          top: 20px;
-          left: -20px;
-          display: none;
-          z-index: 5;
 
-          &.active{
-            display: block;
-          }
-        }
         div{
           display: flex;
           align-items:start;
@@ -90,6 +100,16 @@ $blacklist-red: #E4033B;
         }
         .status{
           width: 10%;
+        }
+      }
+
+      .results{
+        .error{
+          text-align: center;
+          color: $dim;
+          font-size: 1rem;
+          padding: 1.875rem;
+          border-top: 1px solid rgba(33, 63, 125, 0.06);
         }
       }
     }
