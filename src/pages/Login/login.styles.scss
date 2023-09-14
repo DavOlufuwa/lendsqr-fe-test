@@ -93,6 +93,11 @@ $text-green: #39CDCC;
         gap: 1.5rem;
         font-family: "Avenir Next Medium",  sans-serif;
 
+        small{
+          font-size: 0.75rem;
+          color: rgba(255, 0, 0, 0.936)
+        }
+
         .email{
           @include input-field-style;
           padding: 0 1rem 0 1rem;

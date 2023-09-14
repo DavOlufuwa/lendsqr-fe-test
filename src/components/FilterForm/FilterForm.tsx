@@ -34,7 +34,7 @@ const FilterForm = ({formProps}: FormProps) => {
       let sortedOrgsArray: string[]
       let sortedStatusArray: string[]
       
-      const allOrganizations: string[] = allUsers.map((user) => user.organizationName)
+      const allOrganizations: string[] = allUsers.map((user) => user.organizationName);
       const allstatuses: string[] = allUsers.map((user) => user.status)
       const sortedOrgs = new Set<string>()
       const sortedStatuses = new Set<string>()
@@ -54,7 +54,7 @@ const FilterForm = ({formProps}: FormProps) => {
       setAllStatuses(sortedStatusArray)
     }
 
-    sortOrganizations()
+    sortOrganizations();
   }, [])
 
   //Function to Filter the form
@@ -165,12 +165,12 @@ const FilterForm = ({formProps}: FormProps) => {
           />
         </div>
         <div className='form-control-group'>       
-          <label htmlFor='' className='label'>Status</label>
+          <label htmlFor='status' className='label'>Status</label>
           <div className='select-container'>
               <img src={SelectArrow} alt='select'/>
               <select 
                 className='form-select' 
-                id='organization'
+                id='status'
                 value={status}
                 onChange={(event: ChangeEvent<HTMLSelectElement>) => setStatus(event.target.value)}
                 >
