@@ -2,15 +2,19 @@ import { fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {it, expect} from 'vitest';
 import Login from '../pages/Login/Login';
-import { BrowserRouter } from 'react-router-dom';
 import UserDetails from '../pages/UserDetails/UserDetails';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+
 
 
 beforeEach(() => {
   render(
-    <BrowserRouter>
-      <Login />
-    </BrowserRouter>
+    <MemoryRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/users" element={<UserDetails/>} />
+      </Routes>
+    </MemoryRouter>
   );
 })
 
@@ -49,14 +53,11 @@ it("should toggle password", async() => {
   expect(passwordInput.type).toBe("text");  
 })
 
-// Testing the Login Button
-it("Login renders the Dashboard ",  () => {
-  const {loginButton} = getEmailandPasswordFields();
+// Testing the Login Button without filling the form
+it("Login Button renders the Dashboard ",  async() => {
+  const {loginButton, } = getEmailandPasswordFields();
 
-  const { asFragment } = render(<UserDetails/>) 
+  await userEvent.click(loginButton);
 
-  fireEvent.click(loginButton);
-
-  expect (asFragment()).toMatchSnapshot();
+  expect (window.location.pathname).toBe("/");
 });
-
