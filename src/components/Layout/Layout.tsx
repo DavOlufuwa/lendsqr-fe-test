@@ -10,12 +10,12 @@ const Layout = () => {
   const main = document.querySelector("main")
 
   const openMenu = (): void => {
-    setMenuOpen((prevState) => prevState = true );
+    setMenuOpen(true);
     main?.classList.add("overflow-hidden");
   };
 
   const closeMenu = (): void => {
-    setMenuOpen((prevState) => prevState = false);
+    setMenuOpen(false);
     main?.classList.remove("overflow-hidden");
   };
 
