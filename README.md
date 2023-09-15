@@ -1,11 +1,8 @@
 # Lendsqr Frontend Test
-Creating a well-structured README for your React project using Vite, Vitest, and Zustand is crucial for effectively communicating your project's purpose, features, and usage to potential collaborators and users. Here's a template for a README:
-
-# Project Name
 
 ![Project Logo](./public/assets/logo/lendsqr-icon.svg)
 
-This project is a showcase of the admin dashboard of Lendsqr, it contains a login page, a dashboard page, and a profile page. This project features is built with React, TypeScript, SASS and Vite. A user can login, access the dashboard and profile pages. A user can modify the status of the users within the dashboard and filter the users by organization, status, date joined, etc.
+This project is a showcase of the admin dashboard of Lendsqr, it contains a login page, a dashboard page, and a profile page. This project features is built with React, TypeScript, SASS and Vite bundler. A user can login, access the dashboard and profile pages. A user can modify the status of the users within the dashboard and filter the users by organization, status, date joined, etc.
 The project features a state management system using Zustand and a test suite using Vitest.
 
 ## Table of Contents
@@ -18,9 +15,7 @@ The project features a state management system using Zustand and a test suite us
   - [Building for Production](#building-for-production)
   - [Running Tests](#running-tests)
 - [Folder Structure](#folder-structure)
-- [State Management](#state-management)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Getting Started
 
@@ -28,10 +23,10 @@ The project features a state management system using Zustand and a test suite us
 
 ### Prerequisites
 
-List any software or dependencies that users need to have installed before they can use your project. Include versions if necessary.
+You need to have the following installed on your computer.
 
 - Node.js (v14+)
-- npm or yarn
+- yarn
 
 ### Installation
 
@@ -89,6 +84,50 @@ yarn test
 
 ## Folder Structure
 
-Explain the organization of your project's folders and important files. Provide a brief overview of what each folder or file contains.
+Here's an overview of the project's folder structure:
 
+```plaintext
+project-root/
+├── node_modules/           
+├── public/                     
+│   └──assets/             
+│        ├──images/             
+│        ├──icons/             
+│        └──logo/              
+│        
+├── src/                   
+│   ├── components/         
+│   │    ├── Button/             
+│   │    ├── FilterForm/
+│   │    ├── Layout/
+│   │    ├── Navigation/
+│   │    ├── UserDetailsCard/
+│   │    └── UserList
+│   ├── lib/             
+│   │   ├── hook        
+│   │   └── store
+│   ├── pages/             
+│   │   ├── Dashboard        
+│   │   ├── Login        
+│   │   └── UserDetails
+│   │ 
+│   ├── styles/               
+│   │              
+│   ├── tests/             
+│   │   
+│   ├── App.tsx            
+│   ├── main.tsx            
+│   └── vite-env.d.ts
+│
+│
+├── .gitignore             
+├── .index.html             
+├── package.json            
+├── README.md               
+├── tsconfig.json           
+├── tsconfig.node.json           
+├── vercel.json        
+├── vite.config.js         
+└── yarn.lock
+```
 
