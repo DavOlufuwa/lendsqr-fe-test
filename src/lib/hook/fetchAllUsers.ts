@@ -12,7 +12,7 @@ async function fetchAllUserData(): Promise<UserData[] | null> {
     useAllUsersStore.getState().setAllUsers(lendsqrUsers.state.allUsers);
     useAllUsersStore.getState().setFilteredUsers(lendsqrUsers.state.filteredUsers);
 
-    return lendsqrUsers.state.allUsers
+    return lendsqrUsers.state.allUsers;
   } 
   
   try {

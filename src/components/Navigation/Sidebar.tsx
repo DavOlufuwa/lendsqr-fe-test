@@ -27,6 +27,7 @@ import FeesAndPricing from '/assets/icons/badge-percent.svg';
 import AuditLogs from '/assets/icons/clipboard-list.svg';
 import SystemsMessages from '/assets/icons/tire.svg';
 import Logout from '/assets/icons/sign-out.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface sidebarProps  {
 
@@ -35,9 +36,6 @@ interface sidebarProps  {
     closeMenu: () => void;
   };
 }
-
-
-
 
 const Sidebar = ({sidebarProps}: sidebarProps) => {
   
@@ -63,7 +61,11 @@ const Sidebar = ({sidebarProps}: sidebarProps) => {
   
 
   const navClassToggler = ({isActive}:{isActive: boolean}): string => isActive ? "nav-link active-link" : "nav-link"
+  const navigate = useNavigate()
   
+  const logOut = () => {
+    navigate('/')
+  }
 
   return (
     <nav className={`side-navbar ${menuOpen ? "open" : ""}`}
@@ -256,7 +258,7 @@ const Sidebar = ({sidebarProps}: sidebarProps) => {
       </ul> 
     </div>
     <div className='side-nav-footer'>
-      <div className='sub-heading'>
+      <div className='sub-heading' onClick={logOut}>
         <img src={Logout} alt='log out icon'/>
         <p>Logout</p>
       </div>
