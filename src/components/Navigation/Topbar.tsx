@@ -4,6 +4,7 @@ import Logo from '/assets/logo/lendsqr-icon.svg';
 import SearchIcon from '/assets/icons/search-icon.svg';
 import Bell from '/assets/icons/bell.png';
 import DropDown from '/assets/icons/caret-down.svg';
+import { Link } from 'react-router-dom';
 
 
 interface TopbarProps {
@@ -21,9 +22,11 @@ const Topbar = ({topbarProps}: TopbarProps) => {
     <nav>
       {/* Top Navbar Starts */}
       <section className='top-navbar'>
-        <div>
-          <img src={Logo} alt='lendsquare icon' className='lendsqr'/>
-        </div>
+        <Link to="/users">
+          <div>
+            <img src={Logo} alt='lendsquare icon' className='lendsqr'/>
+          </div>
+        </Link>
         <div className='top-options'>
           <div className='search-container'>
             <input className='search-bar' type='search' placeholder='search for anything'/>

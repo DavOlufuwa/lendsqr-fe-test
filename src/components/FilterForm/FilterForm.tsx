@@ -7,13 +7,14 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 type FormProps = {
   formProps: {
     toggleForm: React.Dispatch<React.SetStateAction<boolean>>
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>
   }
 }
 
 
 const FilterForm = ({formProps}: FormProps) => {
 
-  const {toggleForm} = formProps
+  const {toggleForm, setCurrentPage}= formProps
 
   const allUsers  = useAllUsersStore((state) => state.allUsers)
   const [allOrganizations, setAllOrganizations] = useState<string[]>([])
@@ -69,19 +70,22 @@ const FilterForm = ({formProps}: FormProps) => {
       // converting the date 
       const userDateJoined = new Date(user.dateJoined);
       const convertedDate = userDateJoined.toISOString().split('T')[0];
-      
-
-      return(      
+      return (      
         // Checking for fields containing values before filtering
         (!organization || user.organizationName.includes(organization)) &&
         (!username || user.personalInfo.userName.includes(username)) &&
         (!email || user.personalInfo.emailAddress.includes(email)) &&
         (!date || convertedDate === date) &&
         (!phoneNumber || user.personalInfo.phoneNumber.includes(phoneNumber)) &&
-        (!status || user.status.includes(status))
+        (!status || user.status === status)
       )
     });
+
+
+    setCurrentPage(0)
+
     useAllUsersStore.setState({filteredUsers: filteredData})
+
     toggleForm(false)
   };
 
@@ -94,7 +98,6 @@ const FilterForm = ({formProps}: FormProps) => {
     setDate("");
     setPhoneNumber("");
     setStatus("");
-    toggleForm(false)
     resetUsers();
   }
  

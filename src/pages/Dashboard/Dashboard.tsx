@@ -21,22 +21,22 @@ const Dashboard = () => {
         Users
       </section>
       <section className='stats'>
-        <div className='stat-card'>
+        <div className='stat-card' role='stat'>
           <div><img src={UserlistIcon} alt='users list icon'/></div>
           <p className='users'>Users</p>
-          <div className='number'>{numberofUsers}</div>
+          <div className='number' >{numberofUsers}</div>
         </div>
-        <div className='stat-card'>
+        <div className='stat-card' role='stat'>
           <div><img src={ActiveUsers} alt='active users icon'/></div>
           <p className='users'>Active Users</p>
           <div className='number'>{activeUsers}</div>
         </div>
-        <div className='stat-card'>
+        <div className='stat-card' role='stat'>
           <div><img src={UserLoans} alt='users with loans icon'/></div>
           <p className='users'>Users with loans</p>
           <div className='number'>12,453</div>
         </div>
-        <div className='stat-card'>
+        <div className='stat-card' role='stat'>
           <div><img src={UserSavings} alt='users with savings icon'/></div>
           <p className='users'>Users with savings</p>
           <div className='number'>102,453</div>

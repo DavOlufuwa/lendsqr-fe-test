@@ -12,7 +12,6 @@ beforeEach(() => {
     <MemoryRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/users" element={<UserDetails/>} />
       </Routes>
     </MemoryRouter>
   );

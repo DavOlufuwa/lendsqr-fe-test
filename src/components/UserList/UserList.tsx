@@ -28,7 +28,7 @@ const UserList = () => {
   // handling page changes
   const handlePageChange = (selectedPage: { selected: number }) => {
     setCurrentPage(selectedPage.selected)
-  }
+   }
   // handling users per page change
   const handleUsersPerPageChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newValue = Number(e.target.value)
@@ -40,22 +40,30 @@ const UserList = () => {
   const endIndex  = startIndex + usersPerPage;
 
   // Tracking users based on the filtered data
-  const displayedUsers = useMemo(() => userList.slice(startIndex, endIndex), [startIndex, endIndex, userList])
-
-
+  const displayedUsers = useMemo(() => userList.slice(startIndex, endIndex), [endIndex, userList])
+  
   const customNextLabel = (
     <img src={RightArrow} alt="next button"/>
   )
   const customPrevLabel = (
     <img src={LeftArrow} alt="previous button"/>
   )
+
+  //Tracking the page count
+  const trackPageCount = () => {
+
+    return Math.ceil(userList.length / usersPerPage)
+  } 
+
+  
+
   const pageViewNumbers = [10, 20, 50, 70, 100]
 
   return (
     
       <div className="user-list">
         <div className={`filter-form-container ${showForm && 'active'}`} >
-          <FilterForm formProps={{toggleForm}}/>
+          <FilterForm formProps={{toggleForm, setCurrentPage}}/>
         </div>
         <div className="swipe-help">swipe horizontally to view more details</div>
         <section className="content">
@@ -102,12 +110,11 @@ const UserList = () => {
               {
                 displayedUsers.length === 0 ? (
                   <p className="error">No users with such records found</p>
-                ): (
+                ) : (
                   displayedUsers.map((user) => 
                     <UserRow key={user.id} userData={user}/>
                   )
                 )
-
               }
             </div>
 
@@ -139,7 +146,7 @@ const UserList = () => {
             breakLabel={"..."}
             pageRangeDisplayed={2}
             marginPagesDisplayed={2}
-            pageCount={Math.ceil(userList.length / usersPerPage)}
+            pageCount={trackPageCount()}
             onPageChange={handlePageChange}
             containerClassName={"pagination-container"}
             previousLinkClassName={"prevBtn"}

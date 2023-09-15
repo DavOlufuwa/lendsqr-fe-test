@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { UserData } from "../types/typesAndInterfaces";
+import { enqueueSnackbar } from "notistack";
+import fetchAllUserData from "../hook/fetchAllUsers";
 
 
 interface UserStore {
@@ -17,37 +19,48 @@ export const useAllUsersStore = create<UserStore>()(persist(
   (set,) => (
     {
       allUsers: [],
+      filteredUsers: [],
       // setting all users data 
       setAllUsers: (users: UserData[]) => set(() => ({ allUsers: users })),
+
+      setFilteredUsers: (data: UserData[]) => set({filteredUsers: data}),
       // changing the user status
-      changeUserStatus: (id, newStatus) => set((state) => (
-        
-        {
+      changeUserStatus: (id, newStatus) => set((state ) =>{
+        const existingUser = state.allUsers.find((user) => user.id === id);
+
+        if(existingUser){
+
+          enqueueSnackbar(`${existingUser.personalInfo.userName} is now ${newStatus}`, {
+            variant: 'info',
+            autoHideDuration: 3000,
+          })
+        }
+
+        return{
           filteredUsers: state.filteredUsers.map((user) => (
             user.id === id ? {...user, status: newStatus} : user
           )),
-          allUsers:state.filteredUsers.map((user) => (
+          allUsers:state.allUsers.map((user) => (
             user.id === id ? {...user, status: newStatus} : user
           ))
-        } 
-      )),
-      // filtering the users
-      filteredUsers: [],
-      setFilteredUsers: (filterData) => set({filteredUsers: filterData}),
+        }
+        
+      }),
+   
+      
+      
       resetUsers: () => set((state)=> ({filteredUsers: state.allUsers}))
     }),
 
   // Creating the name of the data that will be stored in the local storage
   {
-    name: "lendsqrUsers"
+    name: "lendsqrUsers",
+    partialize: (state) => ({
+      allUsers: state.allUsers,
+      filteredUsers: state.filteredUsers
+    })
   }
 ))
 
 // Fetching the Mock User Data from the API
-fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg")
-.then(res => res.json())
-.then(data => {
-    useAllUsersStore.getState().setAllUsers(data)
-    useAllUsersStore.setState({filteredUsers: data.reverse()})
-  })
-
+fetchAllUserData()
