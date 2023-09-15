@@ -14,7 +14,6 @@ interface UserStore {
   resetUsers: () => void;
 }
 
-
 export const useAllUsersStore = create<UserStore>()(persist(
   (set,) => (
     {
@@ -51,8 +50,6 @@ export const useAllUsersStore = create<UserStore>()(persist(
       
       resetUsers: () => set((state)=> ({filteredUsers: state.allUsers}))
     }),
-
-  // Creating the name of the data that will be stored in the local storage
   {
     name: "lendsqrUsers",
     partialize: (state) => ({

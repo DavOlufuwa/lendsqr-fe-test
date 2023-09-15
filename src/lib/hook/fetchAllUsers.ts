@@ -4,15 +4,17 @@ import { useAllUsersStore } from "../store/useAllUsers";
 
 async function fetchAllUserData(): Promise<UserData[] | null> {
 
-  const storedData = localStorage.getItem("lendsqrUsers")!;
+  const storedData = localStorage.getItem("lendsqrUsers");
 
-  if(storedData !== null){
-    const lendsqrUsers = JSON.parse(storedData);
+  if(storedData){
+    const lendsqrUsers: { state: { allUsers: UserData[], filteredUsers: UserData[] } } = JSON.parse(storedData);
 
     useAllUsersStore.getState().setAllUsers(lendsqrUsers.state.allUsers);
     useAllUsersStore.getState().setFilteredUsers(lendsqrUsers.state.filteredUsers);
-  } 
 
+    return lendsqrUsers.state.allUsers
+  } 
+  
   try {
     const response = await fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg");
 
@@ -24,12 +26,11 @@ async function fetchAllUserData(): Promise<UserData[] | null> {
    
     const reversedData = data.reverse();
     
-     
     useAllUsersStore.getState().setAllUsers(reversedData);
     useAllUsersStore.getState().setFilteredUsers(reversedData);
-
-    return reversedData;
     
+    return reversedData;
+
   } catch (error) {
     console.error(error);
     return null;
