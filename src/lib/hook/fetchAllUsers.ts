@@ -14,26 +14,27 @@ async function fetchAllUserData(): Promise<UserData[] | null> {
 
     return lendsqrUsers.state.allUsers;
   } 
+  else{    
+    try {
+      const response = await fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg");
   
-  try {
-    const response = await fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg");
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data: UserData[] = await response.json();
+     
+      const reversedData = data.reverse();
+      
+      useAllUsersStore.getState().setAllUsers(reversedData);
+      useAllUsersStore.getState().setFilteredUsers(reversedData);
+      
+      return reversedData;
+  
+    } catch (error) {
+      console.error(error);
+      return null;
     }
-
-    const data: UserData[] = await response.json();
-   
-    const reversedData = data.reverse();
-    
-    useAllUsersStore.getState().setAllUsers(reversedData);
-    useAllUsersStore.getState().setFilteredUsers(reversedData);
-    
-    return reversedData;
-
-  } catch (error) {
-    console.error(error);
-    return null;
   }
 }
 
