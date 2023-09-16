@@ -8,10 +8,17 @@ async function fetchAllUserData(): Promise<UserData[] | undefined> {
 
   if(storedData) {
     const lendsqrUsers: { state: { allUsers: UserData[], filteredUsers: UserData[] } } = JSON.parse(storedData);
-
+    
+    if(lendsqrUsers.state.allUsers.length === 0 && lendsqrUsers.state.filteredUsers.length === 0) {
+      useAllUsersStore.getState().setAllUsers(lendsqrUsers.state.allUsers);
+      useAllUsersStore.getState().setFilteredUsers(lendsqrUsers.state.filteredUsers);
+      
+      return lendsqrUsers.state.allUsers;
+    }
+    
     useAllUsersStore.getState().setAllUsers(lendsqrUsers.state.allUsers);
     useAllUsersStore.getState().setFilteredUsers(lendsqrUsers.state.filteredUsers);
-
+    
     return lendsqrUsers.state.allUsers;
   } 
 

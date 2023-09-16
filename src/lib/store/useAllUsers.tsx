@@ -18,7 +18,7 @@ interface UserStore {
 fetchAllUserData()
 
 export const useAllUsersStore = create<UserStore>()(persist(
-  (set,) => (
+  (set) => (
     {
       allUsers: [],
       filteredUsers: [],
