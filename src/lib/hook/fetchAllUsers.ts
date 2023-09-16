@@ -2,7 +2,7 @@ import { UserData } from "../types/typesAndInterfaces";
 import { useAllUsersStore } from "../store/useAllUsers";
 
 
-async function fetchAllUserData(): Promise<UserData[] | null> {
+async function fetchAllUserData(): Promise<UserData[] | undefined> {
 
   const storedData = localStorage.getItem("lendsqrUsers");
 
@@ -14,7 +14,8 @@ async function fetchAllUserData(): Promise<UserData[] | null> {
 
     return lendsqrUsers.state.allUsers;
   } 
-  else{    
+
+
     try {
       const response = await fetch("https://cdn.filestackcontent.com/EWinhQDcQACSGlR5Lcfg");
   
@@ -33,8 +34,6 @@ async function fetchAllUserData(): Promise<UserData[] | null> {
   
     } catch (error) {
       console.error(error);
-      return null;
-    }
   }
 }
 
