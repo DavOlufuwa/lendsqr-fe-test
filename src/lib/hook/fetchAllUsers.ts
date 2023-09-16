@@ -6,7 +6,7 @@ async function fetchAllUserData(): Promise<UserData[] | undefined> {
 
   const storedData = localStorage.getItem("lendsqrUsers");
 
-  if(storedData){
+  if(storedData) {
     const lendsqrUsers: { state: { allUsers: UserData[], filteredUsers: UserData[] } } = JSON.parse(storedData);
 
     useAllUsersStore.getState().setAllUsers(lendsqrUsers.state.allUsers);
@@ -30,8 +30,6 @@ async function fetchAllUserData(): Promise<UserData[] | undefined> {
       useAllUsersStore.getState().setAllUsers(reversedData);
       useAllUsersStore.getState().setFilteredUsers(reversedData);
       
-      return reversedData;
-  
     } catch (error) {
       console.error(error);
   }

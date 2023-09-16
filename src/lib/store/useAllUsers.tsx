@@ -14,6 +14,9 @@ interface UserStore {
   resetUsers: () => void;
 }
 
+// Fetching the Mock User Data from the API
+fetchAllUserData()
+
 export const useAllUsersStore = create<UserStore>()(persist(
   (set,) => (
     {
@@ -59,5 +62,3 @@ export const useAllUsersStore = create<UserStore>()(persist(
   }
 ))
 
-// Fetching the Mock User Data from the API
-fetchAllUserData()
